@@ -1,0 +1,24 @@
+----- submitting the job 
+spark-submit   --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.2   mongodbjob.py
+
+-------- Sending the data to mongo db 
+from pyspark.sql import SparkSession
+
+spark = (
+    SparkSession.builder
+    .appName("AiProjectMongo")
+    .getOrCreate()
+)
+
+df = spark.read.json("hdfs:///user/hdfs/medical/processed_dev.jsonl")
+
+df.write \
+    .format("mongo") \
+    .mode("append") \
+    .option(
+        "uri",
+        ""
+    ) \
+    .save()
+
+spark.stop()

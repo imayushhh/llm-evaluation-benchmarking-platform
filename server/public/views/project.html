@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Use relative path for GitHub Pages -->
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+        rel="stylesheet">
+
+    <!-- Chart.js CDN for Analysis page -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>LLM Efficiency Evaluation Platform</title>
+</head>
+
+<body data-page="project">
+
+
+    <div class="home-container">
+        <!-- Global Navigation with HASH ROUTES -->
+        <nav class="nav-container">
+            <div class="nav-inner">
+                <div class="nav-left">
+                    <img class="nav-logo-img" src="images/logo.png" alt="Logo">
+                    <div class="nav-title">LLM Efficiency Evaluation Platform</div>
+                </div>
+                <div class="nav-links">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/project" class="nav-link">Project</a>
+                    <a href="/analysis" class="nav-link">Analysis</a>
+                </div>
+            </div>
+        </nav>
+
+        <main class="page-inner">
+
+
+            <!-- ========================= -->
+            <!-- PROJECT SECTION           -->
+            <!-- ========================= -->
+            <section id="project" class="body-container page-section">
+                <!-- Page header -->
+                <header class="header-container">
+                    <div class="header-content">
+                        <p class="header-eyebrow">Control Panel</p>
+                        <h1 class="header-title">Evaluation Runner</h1>
+                        <p class="header-subtitle">
+                            Configure and launch evaluations between different LLMs.
+                            Live progress is streamed in real time via WebSockets.
+                        </p>
+                    </div>
+                </header>
+
+                <!-- Section header -->
+                <div class="section-header">
+                    <h2 class="section-title">Evaluation Setup</h2>
+                    <p class="section-subtitle">
+                        Choose your evaluation configuration and start the run.
+                    </p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="evaluation-tabs" role="tablist" aria-label="Evaluation comparisons">
+                    <button class="evaluation-tab is-active"
+                            role="tab"
+                            aria-selected="true"
+                            aria-controls="panel-zero-vs-fine"
+                            data-target="zero-vs-fine">
+                        DeepSeek Evaluation
+                    </button>
+                    <button class="evaluation-tab"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="panel-fine-vs-pre"
+                            data-target="fine-vs-pre">
+                        Qwen Evaluation
+                    </button>
+                </div>
+
+                <!-- PANEL: Zero vs Fine -->
+                <div id="panel-zero-vs-fine"
+                    class="evaluation-panel"
+                    role="tabpanel"
+                     data-mode="zero-vs-fine"
+                    aria-labelledby="zero-vs-fine">
+
+                    <section class="panel-header">
+                       
+                        <div>
+                            <p class="panel-kicker">Evaluation Mode</p>
+                            <h3 class="panel-title">DeepSeek Evaluation</h3>
+                            <p class="panel-subtitle">
+                                Set the question limit and start the run. Live status and accuracy appear on the right.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section class="panel-body">
+                        <div class="panel-controls">
+                            <div class="input-group">
+                                <label for="question-limit-zero">Question limit</label>
+                                <p class="input-description">
+                                    Number of questions to evaluate.
+                                </p>
+                                <input type="number"
+                                    id="question-limit-zero"
+                                    class="question-limit"
+                                    min="1"
+                                    max="3000"
+                                    step="1"
+                                    required
+                                    placeholder="Enter a numeric value">
+                            </div>
+
+                            <div class="panel-actions">
+                                <button id="start-evaluation-btn-zero"
+                                        class="start-evaluation-btn"
+                                        disabled>
+                                    Start Evaluation
+                                </button>
+                                <p class="action-hint">Button activates when a valid limit is entered.</p>
+                            </div>
+                        </div>
+
+                        <div class="panel-activity">
+                            <section class="status-card">
+                                <div class="status-header">
+                                    <h4>Live Evaluation Status</h4>
+                                    <span class="status-chip">WebSocket</span>
+                                </div>
+                                <pre id="status-log-zero" class="status-log">Waiting to start evaluation...</pre>
+                            </section>
+
+                            <section class="status-card status-card--results">
+                                <div class="status-header">
+                                    <h4>Accuracy Results</h4>
+                                    <span class="status-chip">Summary</span>
+                                </div>
+                                <pre id="accuracy-log-zero" class="accuracy-log"></pre>
+                            </section>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- PANEL: Fine vs Pre -->
+<!-- PANEL: Fine vs Pre -->
+                <div id="panel-fine-vs-pre"
+                    class="evaluation-panel is-hidden"
+                    role="tabpanel"
+                    data-mode="fine-vs-pre"
+                    aria-labelledby="fine-vs-pre">
+
+                    <section class="panel-header">
+   
+                        <div>
+                            <p class="panel-kicker">Evaluation Mode</p>
+                            <h3 class="panel-title">Qwen Evaluation</h3>
+                            <p class="panel-subtitle">
+                                Set the question limit and start the run. Live status and accuracy appear on the right.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section class="panel-body">
+                        <div class="panel-controls">
+
+                            <div class="input-group">
+                                <label for="question-limit-fine">Question limit</label>
+                                <p class="input-description">
+                                    Number of questions to evaluate.
+                                </p>
+                                <input type="number"
+                                    id="question-limit-fine"
+                                    class="question-limit"
+                                    min="1"
+                                    max="3000"
+                                    step="1"
+                                    required
+                                    placeholder="Enter a numeric value">
+                            </div>
+
+                            <div class="panel-actions">
+                                <button id="start-evaluation-btn-fine"
+                                        class="start-evaluation-btn"
+                                        disabled>
+                                    Start Evaluation
+                                </button>
+                                <p class="action-hint">Button activates when all inputs are valid.</p>
+                            </div>
+                        </div>
+
+                        <div class="panel-activity">
+                            <section class="status-card">
+                                <div class="status-header">
+                                    <h4>Live Evaluation Status</h4>
+                                    <span class="status-chip">WebSocket</span>
+                                </div>
+                                <pre id="status-log-fine" class="status-log">Waiting to start evaluation...</pre>
+                            </section>
+
+                            <section class="status-card status-card--results">
+                                
+                                <div class="status-header">
+                                    <h4>Accuracy Results</h4>
+                                    <span class="status-chip">Summary</span>
+                                </div>
+                                <pre id="accuracy-log-fine" class="accuracy-log"></pre>
+                            </section>
+                        </div>
+                    </section>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+   
+    <script src="main.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Use relative path for GitHub Pages -->
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+        rel="stylesheet">
+
+    <!-- Chart.js CDN for Analysis page -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>LLM Efficiency Evaluation Platform</title>
+</head>
+
+<body data-page="analysis">
+
+
+    <div class="home-container">
+        <nav class="nav-container">
+            <div class="nav-inner">
+                <div class="nav-left">
+                    <img class="nav-logo-img" src="images/logo.png" alt="Logo">
+                    <div class="nav-title">LLM Efficiency Evaluation Platform</div>
+                </div>
+                <div class="nav-links">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/project" class="nav-link">Project</a>
+                    <a href="/analysis" class="nav-link">Analysis</a>
+                </div>
+            </div>
+        </nav>
+
+        <main class="page-inner">
+            <section id="analysis" class="body-container page-section" >
+                <!-- Page Header -->
+                <header class="header-container">
+                    <div class="header-content">
+                        <p class="header-eyebrow">Data Analysis & Visualization</p>
+                        <h1 class="header-title">Results Dashboard</h1>
+                        <p class="header-subtitle">
+                            Review accuracy, speed, and coverage for each comparison track below.
+                        </p>
+                    </div>
+                </header>
+
+                <div class="section-header">
+                    <h2 class="section-title">Analysis Views</h2>
+                </div>
+
+                <section id="model-comparison"  class="analysis-panel-page" role="tabpanel">
+                    <section class="analysis-kpi-grid">
+                        <article class="kpi-card">
+                            <p class="kpi-label">Total Questions</p>
+                            <p id="mc-kpi-total" class="kpi-value">--</p>
+                            <p class="kpi-caption">Questions in this run.</p>
+                        </article>
+                    <article class="kpi-card">
+                        <p class="kpi-label">Best Accuracy</p>
+                        <p id="mc-kpi-best-accuracy" class="kpi-value">--</p>
+                        <p class="kpi-caption">Highest accuracy achieved.</p>
+                        </article>
+                        <article class="kpi-card">
+                            <p class="kpi-label">Winner</p>
+                            <p id="mc-kpi-winner" class="kpi-value">--</p>
+                            <p class="kpi-caption">Best-performing model.</p>
+                        </article>
+                        <article class="kpi-card">
+                        <p class="kpi-label">Avg Latency (Winner)</p>
+                        <p id="mc-kpi-latency" class="kpi-value">--</p>
+                        <p class="kpi-caption">Milliseconds</p>
+                        </article>
+
+                        
+                    </section>
+
+                    <section class="analysis-chart-grid">
+                    <!-- Accuracy Chart -->
+                    <article class="chart-card">
+                    <div class="chart-top">
+                    <div>
+                        <h3 class="chart-title">Exact-Match Accuracy</h3>
+                        <p class="chart-subtitle">GSM8K (%)</p>
+                    </div>
+                    <span class="chart-badge good">Higher is better</span>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="mcAccuracyBarChart"></canvas>
+                        </div>
+                    </article>
+
+                    <!-- Latency Chart -->
+                    <article class="chart-card">
+                        <div class="chart-top">
+                        <div>
+                            <h3 class="chart-title">Average Inference Latency</h3>
+                            <p class="chart-subtitle">Milliseconds</p>
+                        </div>
+                        <span class="chart-badge warn">Lower is better</span>
+                        </div>
+                        <div class="chart-body">
+                        <canvas id="mcLatencyBarChart"></canvas>
+                        </div>
+                    </article>
+                    </section>
+
+                </section>
+            </section>
+        </main>
+    </div>
+
+   
+    <script src="main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

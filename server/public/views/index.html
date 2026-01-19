@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Use relative path for GitHub Pages -->
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+        rel="stylesheet">
+
+    <!-- Chart.js CDN for Analysis page -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>LLM Efficiency Evaluation Platform</title>
+</head>
+
+<body>
+
+
+    <div class="home-container">
+        <!-- Global Navigation with HASH ROUTES -->
+        <nav class="nav-container">
+            <div class="nav-inner">
+                <div class="nav-left">
+                    <img class="nav-logo-img" src="images/logo.png" alt="Logo">
+                    <div class="nav-title">LLM Efficiency Evaluation Platform</div>
+                </div>
+                <div class="nav-links">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/project" class="nav-link">Project</a>
+                    <a href="/analysis" class="nav-link">Analysis</a>
+                </div>
+            </div>
+        </nav>
+
+        <main class="page-inner">
+
+            <section id="home" class="body-container page-section">
+                          <header class="header-container">
+                    <div class="header-content">
+                        <p class="header-eyebrow">Overview</p>
+                        <h1 class="header-title">Project Summary</h1>
+                        <p class="header-subtitle">
+                             An end-to-end evaluation platform that tests LLM accuracy and response time
+                              across medical dataset using open source models.
+                        </p>
+                    </div>
+                </header>
+
+
+                <div class="section-header">
+                    <h2 class="section-title">Key Metrics</h2>
+                    <p class="section-subtitle">Fast glance summary of what the platform tracks.</p>
+                </div>
+
+                    <div class="stats-grid">
+                    <article class="stat-card">
+                        <p class="stat-label">Evaluation Modes</p>
+                        <ul class="stat-value-list">
+                            <li>DeepSeeks Evaluation</li>
+                            <li>Qwen Evaluation</li>
+                            
+                        </ul>
+                        <p class="stat-caption">Three modes used for evaluation.</p>
+                    </article>
+                    <article class="stat-card">
+                        <p class="stat-label">Core Metric</p>
+                         <ul class="stat-value-list">
+                            <li>Accuracy</li>
+                            <li>Response Time</li>
+                            
+                        </ul>
+                        <p class="stat-caption">Reported per model.</p>
+                    </article>
+                    <article class="stat-card">
+                        <p class="stat-label">Live Updates</p>
+                        <div class="stat-badge">WebSockets</div>
+                        <p class="stat-caption">Streaming status and results.</p>
+                    </article>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- Pipeline Timeline -->
+                <div class="section-header">
+                    <h2 class="section-title">Pipeline Timeline</h2>
+                    <p class="section-subtitle">From dataset selection to live evaluation.</p>
+                </div>
+
+                      <div class="timeline">
+                    <div class="timeline-line"></div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-node">1</div>
+                        <div class="timeline-content">
+                            <h3>Dataset and Model selection</h3>
+                            <p>Choose a Hugging Face dataset and the Open Source model.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-node">2</div>
+                        <div class="timeline-content">
+                            <h3>Cleaning and Preparation</h3>
+                            <p>Clean and validate with PySpark across a Hadoop cluster on GCP.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-node">3</div>
+                        <div class="timeline-content">
+                            <h3>Storage and Access</h3>
+                            <p>Load into MongoDB Atlas for efficient query access.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-node">4</div>
+                        <div class="timeline-content">
+                            <h3>Evaluation runs</h3>
+                            <p>Run evaluations using DeepSeeks and Qwen models</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-node">5</div>
+                        <div class="timeline-content">
+                            <h3>Compare results</h3>
+                            <p>Compare the results of different evaluation runs.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-node">6</div>
+                        <div class="timeline-content">
+                            <h3>Live results and charts</h3>
+                            <p>Stream status and visualize accuracy/time with Chart.js.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- Student Profiles -->
+                <div class="section-header">
+                    <h2 class="section-title">Student Profiles</h2>
+                    <p class="section-subtitle">Meet the team behind this evaluation project.</p>
+                </div>
+                    <div class="bio-grid">
+                    <!-- Ayush -->
+                    <article class="bio-card">
+                        <div class="bio-layout">
+                            <div class="bio-left">
+                                <div class="bio-header">
+                                    <div>
+                                        <h3 class="bio-name">
+                                            <a href="https://github.com/imayushhh" target="_blank" rel="noopener noreferrer">
+                                                Ayush Gupta
+                                            </a>
+                                        </h3>
+                                        <p class="bio-role">BA, Information Technology - York University</p>
+                                    </div>
+                                </div>
+                                <p class="bio-body">
+                                    I am an Information Technology student focused on data and analytics, building
+                                    reliable pipelines and clear visualizations. I enjoy working with SQL, Python, and
+                                    modern data tools to turn raw information into useful insights.
+                                </p>
+                                <div class="bio-section">
+                                    <h4>Interests</h4>
+                                        <ul class="bio-list">
+                                            <li>Data engineering and scalable system development</li>
+                                            <li>Analytics, dashboards, and business intelligence solutions</li>
+                                            <li>AI evaluation, benchmarking, and model performance analysis</li>
+                                            <li>Cloud platforms, DevOps practices, and production-ready data pipelines</li>
+                                        </ul>
+                                </div>
+                                <div class="bio-meta">
+                                    <a href="tel:6478648654">647-864-8654</a>
+                                    <span class="meta-divider">|</span>
+                                    <a href="mailto:ag23@my.yorku.ca">ag23@my.yorku.ca</a>
+                                </div>
+                                <div class="bio-tags">
+                                    <span class="tag-pill accent">Data and Analytics</span>
+                                    <span class="tag-pill">SQL - ETL - BI</span>
+                                    <span class="tag-pill">Cloud and DevOps</span>
+                                </div>
+                            </div>
+                            <div class="bio-right">
+                                <img class="bio-photo" src="images/ayushg.png" alt="Ayush Photo">
+                                <div class="bio-footer">
+                                    <a class="link-button" href="https://github.com/imayushhh" target="_blank"
+                                       rel="noopener noreferrer">
+                                        <span>GitHub</span>
+                                        
+                                    </a>
+                                    <a class="link-button" href="https://www.linkedin.com/in/ayush-gupta-654ab7195/" target="_blank" rel="noopener noreferrer">
+                                        <span>LinkedIn</span>
+                                      
+                                    </a>
+                                    <a class="link-button" href="https://imayushhh.github.io/Portfolio/" target="_blank" rel="noopener noreferrer">
+                                        <span>Portfolio</span>
+                                       
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            
+        </main>
+    </div>
+
+   
+    <script src="main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
