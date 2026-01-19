@@ -1,113 +1,100 @@
-#🚀 LLM Evaluation & Benchmarking Platform
+# 🚀 LLM Evaluation & Benchmarking Platform
 
-An end-to-end platform to evaluate, benchmark, and analyze large language models (LLMs) by measuring accuracy and latency on reasoning-heavy datasets.
-This project investigates whether training improves reasoning performance and compares open-source LLMs under controlled conditions.
+An end-to-end platform to evaluate, benchmark, and analyze Large Language Models (LLMs) by measuring **accuracy** and **latency** on reasoning-heavy datasets.
 
-#📌 Project Overview
+This project investigates:
+- Whether **training (fine-tuning)** improves reasoning performance
+- How **open-source reasoning models** compare under identical conditions
+
+---
+
+## 📌 Project Overview
 
 This project was built to answer two practical questions:
 
-Does training (fine-tuning) actually improve reasoning performance?
+1. **Does training (fine-tuning) actually improve reasoning performance?**
+2. **How do modern open-source reasoning models compare under controlled conditions?**
 
-How do modern open-source reasoning models compare under identical conditions?
+Instead of relying on leaderboard claims, this platform provides a **reproducible, system-level evaluation pipeline** with **real-time visualization**.
 
-Rather than relying on leaderboard claims, this platform provides a reproducible, system-level evaluation pipeline with real-time visualization.
+---
 
-#🧱 Data Ingestion & Preparation Pipeline
+## 🧱 Data Ingestion & Preparation Pipeline
 
-Before evaluation, a production-style data pipeline was implemented:
+Before model evaluation, a production-style **data engineering pipeline** was implemented.
 
-Dataset Source: GSM8K from Hugging Face
+### Dataset Source
+- **GSM8K** (via Hugging Face)
 
-Processing Layer:
+### Processing Layer
+- A **GCP Hadoop cluster** was provisioned to:
+  - Download the dataset
+  - Clean and normalize records
+  - Perform schema validation and transformations at scale
 
-A GCP Hadoop cluster was provisioned to download, clean, and normalize the dataset
+### Storage Layer
+- The cleaned dataset was transferred to **MongoDB Atlas**
+- MongoDB serves as the **single source of truth** for all evaluations
 
-Schema validation and transformation were performed at scale
+This separation mirrors real-world ML systems by decoupling **data engineering** from **model evaluation**.
 
-Storage:
+---
 
-The cleaned dataset was transferred to MongoDB Atlas
+## 🔬 Evaluation Methodology
 
-MongoDB served as the single source of truth for all evaluations
+The evaluation was conducted in **two experimental phases**.
 
-This design separates data engineering from model evaluation, mirroring real-world ML systems.
+---
 
-#🔬 Evaluation Methodology
+### Part 1: Does Training Improve Reasoning Performance?
 
-The evaluation was conducted in two distinct experimental phases.
+**Objective**  
+Determine whether fine-tuning provides measurable gains on reasoning tasks.
 
-Part 1: Does Training Improve Reasoning Performance?
+**Setup**
+- Dataset: GSM8K
+- Evaluation modes:
+  - Zero-shot inference
+  - Fine-tuned inference
 
-Objective:
-Determine whether training provides measurable gains on reasoning tasks.
+**Metrics**
+- Accuracy
+- Average response latency
 
-Setup:
+**Findings**
+- Fine-tuning did **not consistently outperform** zero-shot inference
+- In several cases, zero-shot performance **matched or exceeded** trained models
+- Training introduced additional complexity **without guaranteed benefits**
 
-Dataset: GSM8K
+---
 
-Evaluation modes:
+### Part 2: Open-Source Model Benchmarking
 
-Zero-shot inference
+**Objective**  
+Compare open-source reasoning models under **identical evaluation conditions**.
 
-Fine-tuned inference
+**Models Evaluated**
+- DeepSeek
+- Qwen
 
-Metrics:
+**Results**
+- Comparable accuracy across models
+- Noticeably different latency profiles
+- Model choice depends on **deployment constraints**, not accuracy alone
 
-Accuracy
+---
 
-Average response latency
+## 🏗️ System Architecture
 
-Findings:
-
-Fine-tuning did not consistently outperform zero-shot inference
-
-In multiple cases, zero-shot performance matched or exceeded trained models
-
-Training introduced additional complexity without guaranteed benefits
-
-Part 2: Open-Source Model Benchmarking
-
-Objective:
-Compare two open-source reasoning models under identical conditions.
-
-Models Evaluated:
-
-DeepSeek
-
-Qwen
-
-Results:
-
-Comparable accuracy
-
-Different latency profiles
-
-Model choice depends on use case constraints, not accuracy alone
-
-#🏗️ System Architecture
-
+```text
 Hugging Face Dataset
-↓
+        ↓
 GCP Hadoop Cluster (Cleaning & Transformation)
-↓
+        ↓
 MongoDB Atlas
-↓
+        ↓
 Evaluation Engine (Node.js)
-↓
+        ↓
 WebSockets (Live Updates)
-↓
+        ↓
 Frontend Dashboard (Chart.js)
-
-#🛠️ Tech Stack
-
-Data Engineering:
-GCP, Hadoop, Hugging Face, MongoDB Atlas
-
-Backend:
-Node.js, Express, WebSockets
-
-Frontend:
-HTML, CSS, JavaScript, Chart.js
-
-
