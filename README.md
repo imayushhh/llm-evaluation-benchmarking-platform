@@ -1,9 +1,9 @@
-🚀 LLM Evaluation & Benchmarking Platform
+#🚀 LLM Evaluation & Benchmarking Platform
 
 An end-to-end platform to evaluate, benchmark, and analyze large language models (LLMs) by measuring accuracy and latency on reasoning-heavy datasets.
 This project investigates whether training improves reasoning performance and compares open-source LLMs under controlled conditions.
 
-📌 Project Overview
+#📌 Project Overview
 
 This project was built to answer two practical questions:
 
@@ -13,7 +13,7 @@ How do modern open-source reasoning models compare under identical conditions?
 
 Rather than relying on leaderboard claims, this platform provides a reproducible, system-level evaluation pipeline with real-time visualization.
 
-🧱 Data Ingestion & Preparation Pipeline
+#🧱 Data Ingestion & Preparation Pipeline
 
 Before evaluation, a production-style data pipeline was implemented:
 
@@ -33,7 +33,7 @@ MongoDB served as the single source of truth for all evaluations
 
 This design separates data engineering from model evaluation, mirroring real-world ML systems.
 
-🔬 Evaluation Methodology
+#🔬 Evaluation Methodology
 
 The evaluation was conducted in two distinct experimental phases.
 
@@ -85,7 +85,7 @@ Different latency profiles
 
 Model choice depends on use case constraints, not accuracy alone
 
-🏗️ System Architecture
+#🏗️ System Architecture
 
 Hugging Face Dataset
 ↓
@@ -99,7 +99,7 @@ WebSockets (Live Updates)
 ↓
 Frontend Dashboard (Chart.js)
 
-🛠️ Tech Stack
+#🛠️ Tech Stack
 
 Data Engineering:
 GCP, Hadoop, Hugging Face, MongoDB Atlas
@@ -110,7 +110,4 @@ Node.js, Express, WebSockets
 Frontend:
 HTML, CSS, JavaScript, Chart.js
 
-👤 Author
 
-Ayush Gupta
-LLM Evaluation & Benchmarking Platform
