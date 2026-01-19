@@ -1,53 +1,48 @@
-LLM Evaluation & Benchmarking Platform
+🚀 LLM Evaluation & Benchmarking Platform
 
-An end-to-end platform to evaluate and benchmark Large Language Models (LLMs) by measuring accuracy and latency on reasoning-heavy datasets.
+An end-to-end platform to evaluate, benchmark, and analyze large language models (LLMs) by measuring accuracy and latency on reasoning-heavy datasets.
+This project investigates whether training improves reasoning performance and compares open-source LLMs under controlled conditions.
 
-This project investigates whether training (fine-tuning) improves reasoning performance and compares open-source reasoning models under identical, reproducible conditions.
+📌 Project Overview
 
-Project Overview
-
-This platform was built to answer two practical questions:
+This project was built to answer two practical questions:
 
 Does training (fine-tuning) actually improve reasoning performance?
 
-How do modern open-source reasoning models compare when evaluated under the same setup?
+How do modern open-source reasoning models compare under identical conditions?
 
-Instead of relying on leaderboard claims, this project implements a system-level evaluation pipeline with controlled experiments and real-time visualization.
+Rather than relying on leaderboard claims, this platform provides a reproducible, system-level evaluation pipeline with real-time visualization.
 
-Data Ingestion & Preparation Pipeline
+🧱 Data Ingestion & Preparation Pipeline
 
-Before any evaluation, a production-style data pipeline was implemented.
+Before evaluation, a production-style data pipeline was implemented:
 
-Dataset Source
+Dataset Source: GSM8K from Hugging Face
 
-GSM8K (from Hugging Face)
+Processing Layer:
 
-Processing Layer
+A GCP Hadoop cluster was provisioned to download, clean, and normalize the dataset
 
-A GCP Hadoop cluster was provisioned
+Schema validation and transformation were performed at scale
 
-The dataset was downloaded, cleaned, and normalized at scale
+Storage:
 
-Schema validation and transformation were applied
-
-Storage
-
-Cleaned data was transferred to MongoDB Atlas
+The cleaned dataset was transferred to MongoDB Atlas
 
 MongoDB served as the single source of truth for all evaluations
 
-This separation of data engineering and model evaluation mirrors real-world ML systems.
+This design separates data engineering from model evaluation, mirroring real-world ML systems.
 
-Evaluation Methodology
+🔬 Evaluation Methodology
 
-The evaluation was conducted in two experimental phases.
+The evaluation was conducted in two distinct experimental phases.
 
 Part 1: Does Training Improve Reasoning Performance?
 
-Objective
+Objective:
 Determine whether training provides measurable gains on reasoning tasks.
 
-Setup
+Setup:
 
 Dataset: GSM8K
 
@@ -57,13 +52,13 @@ Zero-shot inference
 
 Fine-tuned inference
 
-Metrics
+Metrics:
 
 Accuracy
 
 Average response latency
 
-Key Findings
+Findings:
 
 Fine-tuning did not consistently outperform zero-shot inference
 
@@ -73,68 +68,49 @@ Training introduced additional complexity without guaranteed benefits
 
 Part 2: Open-Source Model Benchmarking
 
-Objective
-Compare open-source reasoning models under identical conditions.
+Objective:
+Compare two open-source reasoning models under identical conditions.
 
-Models Evaluated
+Models Evaluated:
 
 DeepSeek
 
 Qwen
 
-Results
+Results:
 
-Comparable accuracy across models
+Comparable accuracy
 
 Different latency profiles
 
-Model choice depends on system constraints, not accuracy alone
+Model choice depends on use case constraints, not accuracy alone
 
-System Architecture
+🏗️ System Architecture
 
 Hugging Face Dataset
-→ GCP Hadoop Cluster (Cleaning & Transformation)
-→ MongoDB Atlas
-→ Evaluation Engine (Node.js)
-→ WebSockets (Live Updates)
-→ Frontend Dashboard (Chart.js)
-
-Tech Stack
-
-Data Engineering
-
-GCP
-
-Hadoop
-
-Hugging Face
-
+↓
+GCP Hadoop Cluster (Cleaning & Transformation)
+↓
 MongoDB Atlas
+↓
+Evaluation Engine (Node.js)
+↓
+WebSockets (Live Updates)
+↓
+Frontend Dashboard (Chart.js)
 
-Backend
+🛠️ Tech Stack
 
-Node.js
+Data Engineering:
+GCP, Hadoop, Hugging Face, MongoDB Atlas
 
-Express
+Backend:
+Node.js, Express, WebSockets
 
-WebSockets
+Frontend:
+HTML, CSS, JavaScript, Chart.js
 
-Frontend
+👤 Author
 
-HTML
-
-CSS
-
-JavaScript
-
-Chart.js
-
-Key Takeaways
-
-Training does not automatically improve reasoning performance
-
-Zero-shot models can be surprisingly competitive
-
-Latency is a critical differentiator between models
-
-Reproducible evaluation pipelines matter more than leaderboard scores
+Ayush Gupta
+LLM Evaluation & Benchmarking Platform
